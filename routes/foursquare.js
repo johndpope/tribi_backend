@@ -1217,6 +1217,7 @@ router.post("/join_group_request", function(req, res) {
   let phonenumbers = req.body.phone_numbers;
 
   let applink = constants.applink;
+  let androidlink = constants.androidlink;
   for (let i = 0; i < phonenumbers.length; i++) {
     mixpanel.people.increment(callbacknumber, "inviteSents");
     let phone = phonenumbers[i];
@@ -1245,7 +1246,7 @@ router.post("/join_group_request", function(req, res) {
           if (existinguser.length == 0) {
             // send sms
             console.log("sending sms to phone number:", phone);
-            let messagebody = `${username} would like you to join their group on Tribi! Download here ${applink}`;
+            let messagebody = `${username} would like you to join their group on Tribi! Download here ${applink} ${androidlink}`;
             twilioclient.messages
               .create({
                 body: messagebody,

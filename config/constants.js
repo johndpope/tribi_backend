@@ -2,6 +2,7 @@ module.exports = {
   base_url: "https://vast-taiga-29858.herokuapp.com",
   applink:
     "https://itunes.apple.com/ca/app/tribi/id1363186052?mt=8",
+  androidlink: "https://play.google.com/store/apps/details?id=com.tribi.Tribi",
   secret: "nodeauthsecret",
   frommail: "Tribifeedback@gmail.com",
   mailgun: {
