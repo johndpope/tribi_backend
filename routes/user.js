@@ -576,12 +576,12 @@ router.post("/unset_favorite_venue", function(req, res) {
           error: constants.errors.user.user_not_found
         });
       } else {
-        let oldvenue = user.favorite_venues.filter(function(item) {
-          return item == venue_id;
+        let newfavorite_venues = user.favorite_venues.filter(function(item) {
+          return item != venue_id;
         });
-        if (oldvenue.length > 0) {
-          let newfavorite_venues = user.favorite_venues;
-          newfavorite_venues.splice(venue_id, 1);
+        // if (oldvenue.length > 0) {
+          // let newfavorite_venues = user.favorite_venues;
+          // newfavorite_venues.splice(venue_id, 1);
           // save the user
           User.findOneAndUpdate(
             { _id: user_id },
@@ -603,12 +603,12 @@ router.post("/unset_favorite_venue", function(req, res) {
               }
             }
           );
-        } else {
-          return res.json({
-            success: false,
-            error: constants.errors.group_error.not_found
-          });
-        }
+        // } else {
+        //   return res.json({
+        //     success: false,
+        //     error: constants.errors.group_error.not_found
+        //   });
+        // }
       }
     }
   });
